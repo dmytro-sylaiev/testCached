@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                mvn clean install -Dmaven.build.cache.enabled=true
+                sh """ mvn clean install
+                """
+
             }
         }
     }
