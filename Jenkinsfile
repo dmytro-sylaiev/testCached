@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    tool name: 'mvn3', type: 'maven'
+    tools {
+            maven 'apache-maven-3.9.6'
+        }
 
     stages {
         stage('Build') {
