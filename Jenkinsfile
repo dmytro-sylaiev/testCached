@@ -1,5 +1,6 @@
 String build_cache_location = ''
-
+final String pullRequestId = env.CHANGE_ID
+final String branch_name = pullRequestId != null ? env.CHANGE_BRANCH : env.BRANCH_NAME
 pipeline {
     agent any
     tools {
