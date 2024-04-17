@@ -43,9 +43,6 @@ pipeline {
                     }
                 }
 
-                sh """ mvn clean install -Dmaven.build.cache.enabled=true
-                """
-
             }
         }
     }
