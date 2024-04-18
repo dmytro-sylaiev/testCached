@@ -24,7 +24,7 @@ pipeline {
                     if (params.MAVEN_CACHE){
                         if (pullRequestId != null) {
                             build_cache_location = "/tmp/build_cache/$pullRequestId"
-                            if (!fileExists($build_cache_location)) {
+                            if (!fileExists(build_cache_location)) {
                                     sh """
                                         mkdir $build_cache_location
                                     """.stripIndent()
