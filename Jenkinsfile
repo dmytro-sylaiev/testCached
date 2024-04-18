@@ -28,8 +28,8 @@ pipeline {
                             println '- MAVEN_CACHE content'
                             sh """
                                 set -xe
-                                if ! [[ -d "/tmp/build_cache/$build_cache_location" ]]; then
-                                    mkdir /tmp/build_cache/$build_cache_location
+                                if ! [[ -d "$build_cache_location" ]]; then
+                                    mkdir $build_cache_location
                                 fi
 
                                 ls -l /tmp/build_cache
