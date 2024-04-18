@@ -23,12 +23,16 @@ pipeline {
                 println 'Manage the MAVEN_CACHE option'
                     if (params.MAVEN_CACHE){
                         if (pullRequestId != null) {
-                            build_cache_location = "/home/jenkins/build_cache/$pullRequestId"
+                            build_cache_location = "/tmp/build_cache/$pullRequestId"
 
                             println '- MAVEN_CACHE content'
                             sh """
                                 set -xe
-                                ls -l /home/jenkins/build_cache
+                                if [[ ! -d "$build_cache_location" ]]; then
+                                    mkdir $build_cache_location
+                                fi
+
+                                ls -l /tmp/build_cache
                                 ls -l $build_cache_location
                                 """.stripIndent()
 
