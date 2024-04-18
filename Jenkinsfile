@@ -24,13 +24,14 @@ pipeline {
                     if (params.MAVEN_CACHE){
                         if (pullRequestId != null) {
                             build_cache_location = "/tmp/build_cache/$pullRequestId"
-
+                            if (!fileExists($build_cache_location)) {
+                                    sh """
+                                        mkdir $build_cache_location
+                                    """.stripIndent()
+                                }
                             println '- MAVEN_CACHE content'
                             sh """
                                 set -xe
-                                if [[ ! -d "$build_cache_location" ]]; then
-                                    mkdir $build_cache_location
-                                fi
 
                                 ls -l /tmp/build_cache
                                 ls -l $build_cache_location
